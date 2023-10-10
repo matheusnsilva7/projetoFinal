@@ -11,7 +11,8 @@ function App() {
         password: e.target[1].value,
       })
       .then((response) => {
-        document.cookie = `api_token=${response.data.access_token}; path=/`;
+        document.cookie = `user=${response.data.user_id}; path=/`;
+
         if (response.statusText === "OK") {
           window.location.href = "/overview";
         }

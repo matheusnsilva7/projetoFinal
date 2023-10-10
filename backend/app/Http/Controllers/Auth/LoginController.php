@@ -60,17 +60,19 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
+{
+    $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $token = auth()->user()->createToken('API Token')->accessToken;
+    if (Auth::attempt($credentials)) {
+        $user = auth()->user(); 
+        $userId = $user->id;  
+        $token = $user->createToken('API Token')->accessToken;
 
-            return response()->json(['message' => 'Login successful', 'access_token' => $token], 200);
-        } else {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
+        return response()->json(['message' => 'Login successful', 'user' => $user, 'user_id' => $userId, 'access_token' => $token], 200);
+    } else {
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
+}
 
     public function logout(Request $request)
     {

@@ -6,7 +6,7 @@ import Register from "./components/register";
 import Settings from "./components/settings";
 import Users from "./components/users";
 import Roles from "./components/roles";
-import Logs from "./components/logs";
+import Logs from "./components/logss";
 import Links from "./components/links";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

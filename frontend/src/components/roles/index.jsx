@@ -6,6 +6,7 @@ import Nav from "../nav";
 const index = () => {
   const [data, setData] = useState([]);
   const [form, setForm] = useState(false);
+  const [role, setRole] = useState({});
 
   useEffect(() => {
     fetchData();
@@ -20,6 +21,22 @@ const index = () => {
     }
   };
 
+  const update = async (e) => {
+    try {
+      e.preventDefault();
+      await axios.patch(
+        `http://localhost:8000/api/roles/${role.id}`,
+        Object.fromEntries(new FormData(e.target))
+      );
+      e.target.reset();
+      setForm(false);
+      setRole({});
+      fetchData();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const createRole = async (e) => {
     try {
       e.preventDefault();
@@ -29,6 +46,15 @@ const index = () => {
       );
       e.target.reset();
       setForm(false);
+      fetchData();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const del = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8000/api/roles/${id}`);
       fetchData();
     } catch (err) {
       console.log(err);
@@ -67,9 +93,22 @@ const index = () => {
                             ? e.modification_date
                             : "not defined"}
                         </td>
-                        <td id={e.id} className={classes.blue}>
-                          <span className="material-symbols-outlined">
+                        <td className={classes.td}>
+                          <span
+                            id={e.id}
+                            className={`material-symbols-outlined ${classes.blue}`}
+                            onClick={() => {
+                              setRole(e);
+                              setForm(true);
+                            }}
+                          >
                             settings
+                          </span>
+                          <span
+                            className={`material-symbols-outlined ${classes.red}`}
+                            onClick={() => del(e.id)}
+                          >
+                            delete
                           </span>
                         </td>
                       </tr>
@@ -82,10 +121,26 @@ const index = () => {
       </div>
       {form && (
         <div className={classes.formContainer}>
-          <div onClick={() => setForm(false)}></div>
-          <form onSubmit={createRole}>
+          <div
+            onClick={() => {
+              setForm(false);
+              setRole({});
+            }}
+          ></div>
+          <form onSubmit={role.id ? update : createRole}>
             <label htmlFor="role">Role:</label>
-            <input type="text" name="role" id="role" required />
+            <input
+              type="text"
+              name="role"
+              id="role"
+              value={role.role ? role.role : ""}
+              onChange={(e) =>
+                setRole((i) => {
+                  return { ...i, role: e.target.value };
+                })
+              }
+              required
+            />
             <br />
 
             <label htmlFor="user_creation">User Creation:</label>
@@ -93,6 +148,12 @@ const index = () => {
               type="number"
               name="user_creation"
               id="user_creation"
+              value={role.user_creation ? role.user_creation : ""}
+              onChange={(e) =>
+                setRole((i) => {
+                  return { ...i, user_creation: e.target.value };
+                })
+              }
               required
             />
             <br />
@@ -102,6 +163,12 @@ const index = () => {
               type="number"
               name="user_modification"
               id="user_modification"
+              value={role.user_modification ? role.user_modification : ""}
+              onChange={(e) =>
+                setRole((i) => {
+                  return { ...i, user_modificantion: e.target.value };
+                })
+              }
               required
             />
             <br />

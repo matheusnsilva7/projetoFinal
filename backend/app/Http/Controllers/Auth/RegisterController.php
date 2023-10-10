@@ -89,6 +89,6 @@ class RegisterController extends Controller
 
         $token = $user->createToken('API Token')->accessToken;
 
-        return response()->json(['message' => 'Registration successful', 'access_token' => $token]);
+        return response()->json(['message' => 'Registration successful', 'access_token' => $token, 'user_id' => $user->id]);
     }
 }

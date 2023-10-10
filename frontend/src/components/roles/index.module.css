@@ -96,3 +96,11 @@
 .formContainer form label{
   font-size: 15px;
 }
+.td {
+  display: flex;
+  gap:10px
+}
+.red {
+  color: red;
+  cursor: pointer;
+}

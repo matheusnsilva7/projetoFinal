@@ -1,6 +1,10 @@
 import classes from "./nav.module.css";
 
 const nav = () => {
+  const logout = () => {
+    document.cookie = `user=null; path=/`;
+    window.location.href = "/";
+  };
   return (
     <nav className={classes.nav}>
       <ul>
@@ -33,9 +37,12 @@ const nav = () => {
           </a>
         </li>
         <li>
-          <a href="/" className={classes.center}>
+          <div
+            onClick={logout}
+            className={`${classes.center} ${classes.logout}`}
+          >
             <span className="material-symbols-outlined">logout</span>Logout
-          </a>
+          </div>
         </li>
       </ul>
     </nav>

@@ -96,6 +96,14 @@
 .formContainer form label {
   font-size: 15px;
 }
-.formContainer form input[type=radio] {
-  width:auto;
+.formContainer form input[type="radio"] {
+  width: auto;
+}
+.td {
+  display: flex;
+  gap: 10px;
+}
+.red {
+  color: red;
+  cursor: pointer;
 }

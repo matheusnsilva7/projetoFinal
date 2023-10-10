@@ -36,6 +36,12 @@
   padding: 0.5rem 0.8rem 0.4rem;
   border-radius: 1rem;
 }
+.input {
+  border: 1px solid #bdbdbd;
+  outline: none;
+  padding: 5px;
+  border-radius: 1rem;
+}
 .mainContainer form label input {
   border: none;
   outline: none;

@@ -13,3 +13,6 @@
   color: white;
   gap: 10px;
 }
+.logout {
+  cursor: pointer;
+}

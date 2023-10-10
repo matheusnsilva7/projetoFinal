@@ -1,3 +1,4 @@
+import axios from "axios";
 import classes from "./index.module.css";
 
 const index = () => {
@@ -5,11 +6,14 @@ const index = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/api/login", {
-        email: e.target[0].value,
-        password: e.target[1].value,
+      .post("http://localhost:8000/api/register", {
+        name: e.target[0].value,
+        email: e.target[1].value,
+        password: e.target[2].value,
+        password_confirmation: e.target[3].value,
       })
       .then((response) => {
+        document.cookie = `user=${response.data.user_id}; path=/`;
         if (response.statusText === "OK") {
           window.location.href = "/overview";
         }
@@ -28,6 +32,14 @@ const index = () => {
           multiple paths for you to choose
         </p>
         <form onSubmit={formHandler}>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Name"
+            className={classes.input}
+            required
+          />
           <label htmlFor="email">
             <span className="material-symbols-outlined">mail</span>
             <input type="text" name="email" placeholder="Email" id="email" />
@@ -41,8 +53,15 @@ const index = () => {
               id="password"
             />
           </label>
-
-          <button>Start coding now</button>
+          <input
+            type="password"
+            id="password_confirmation"
+            name="password_confirmation"
+            placeholder="Password confirmation"
+            className={classes.input}
+            required
+          />
+          <button>create</button>
         </form>
         <p>or continue with these social profile</p>
         <div className={classes.socialMedia}>
