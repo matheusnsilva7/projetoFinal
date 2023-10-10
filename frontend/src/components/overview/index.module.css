@@ -1,0 +1,33 @@
+.container {
+  height: 100vh;
+  display: flex;
+}
+.nav {
+  background-color: #808080;
+  width:300px;
+}
+.nav ul {
+  padding: 20px 10px;
+  display: grid;
+  gap: 2rem;
+}
+.mainContainer {
+  background-color: #f7f7f7;
+  width: 100%;
+  height: 100%;
+  padding:25px;
+}
+.mainContainer div{
+    background-color: white;
+    box-shadow:  0 0 3px #808080;
+    border-radius: 2px;
+    min-height: 400px;
+    padding: 15px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 10px;
+}

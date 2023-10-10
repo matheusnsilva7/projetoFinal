@@ -1,0 +1,15 @@
+.nav {
+  background-color: #808080;
+  width: 300px;
+}
+.nav ul {
+  padding: 30px 10px;
+  display: grid;
+  gap: 2rem;
+}
+.center {
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 10px;
+}

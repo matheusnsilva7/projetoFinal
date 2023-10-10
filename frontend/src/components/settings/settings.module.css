@@ -1,0 +1,60 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+  }
+  .nav {
+    background-color: #808080;
+    width:300px;
+  }
+  .nav ul {
+    padding: 30px 10px;
+    display: grid;
+    gap: 2rem;
+  }
+  .mainContainer {
+    background-color: #f7f7f7;
+    width: 100%;
+    height: 100%;
+    padding:25px;
+  }
+  .mainContainer div{
+      background-color: white;
+      box-shadow:  0 0 3px #808080;
+      border-radius: 2px;
+      min-height: 400px;
+      padding: 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  }
+  .center {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 10px;
+  }
+  .mainContainer button {
+    background-color: rgb(104, 127, 255);
+    border: none;
+    color: white;
+    width:100px;
+    height:30px;
+    margin-left: auto;
+    border-radius: 5px;
+  }
+  .table{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    grid-column: span 2;
+  }
+  .table thead{
+    font-size: 18px;
+    background-color: red;
+    color:white;
+  }
+  .table tbody{
+    font-size: 13px;
+  }
+  .blue{
+    color:rgb(4, 0, 255);
+  }
